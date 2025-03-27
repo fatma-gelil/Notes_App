@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/screens/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key, required this.bgColor});
-  final Color bgColor;
-
+  const NoteItem({super.key, required this.noteModel});
+  //final Color bgColor;
+  final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,21 +17,22 @@ class NoteItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: bgColor, borderRadius: BorderRadius.circular(16)),
+            color: Color(noteModel.color),
+            borderRadius: BorderRadius.circular(16)),
         child: Padding(
           padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
-                title: const Text(
-                  'Flutter Tips',
+                title: Text(
+                  noteModel.title,
                   style: TextStyle(color: Colors.black, fontSize: 26),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    'Build your career with tharwat samy',
+                    noteModel.subTitle,
                     style: TextStyle(
                         color: Colors.black.withOpacity(.5), fontSize: 18),
                   ),
@@ -47,7 +49,7 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 24),
                 child: Text(
-                  'March 15,2025',
+                  noteModel.date,
                   style: TextStyle(
                       color: Colors.black.withOpacity(.5), fontSize: 16),
                 ),

@@ -12,8 +12,7 @@ class NotesView extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: const NotesViewBody(),
+        body: NotesViewBody(),
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           onPressed: () {
@@ -23,7 +22,7 @@ class NotesView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16)),
               context: context,
               builder: (context) {
-                return const AddNoteButtomSheet();
+                return AddNoteButtomSheet();
               },
             );
           },
